@@ -2,8 +2,9 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views import generic
 from apps.blogs.models import Blog,Departments,About,Gallery,Contact
-from apps.blogs.forms import BlogCreateForm, BlogUpdateForm, BlogDeleteForm
+from apps.blogs.forms import BlogCreateForm, BlogUpdateForm, BlogDeleteForm,GalleryCreateForm,GalleryUpdateForm,GalleryDeleteForm,NewsSearchForm
 
+from django.views.generic import View
 
 class BlogCreateView(generic.CreateView):
     model = Blog
@@ -77,10 +78,41 @@ class AboutUsView(generic.TemplateView):
     template_name = 'about.html'
 
 
+
+
+
+class GalleryCreateView(generic.CreateView):
+    model = Gallery
+    form_class = GalleryCreateForm
+    template_name = 'gallery/gallery_create.html'
+    context_object_name = 'gallery'
+    success_url = reverse_lazy('index') 
+
+
+
+
+class GalleryUpdateView(generic.UpdateView):
+    model = Gallery
+    form_class = GalleryUpdateForm
+    template_name = 'gallery/gallery_update.html'
+    success_url = reverse_lazy('gallery_list') 
+
+
+
+
+class GalleryDeleteView(generic.DeleteView):
+    model = Gallery
+    template_name = 'gallery/gallery_delete.html'
+    context_object_name = 'gallery'
+    success_url = reverse_lazy('index') 
+#
+
+
 class GalleryListView(generic.ListView):
     model = Gallery
     template_name = 'project.html'
-    context_object_name = 'blogs'
+    context_object_name = 'gallery'
+
 
 
 class GallerySingleView(generic.ListView):
@@ -97,3 +129,19 @@ class GallerySingleView(generic.ListView):
 class ContactListView(generic.ListView):
     model = Contact
     template_name = 'contact.html'
+
+class NewssearchView(View):
+    def get(self, request):
+        form = NewsSearchForm()
+        return render(request, 'news_search.html', {'form': form, 'blogs': None})
+
+    def post(self, request):
+        form = NewsSearchForm(request.POST)
+        if form.is_valid():
+            search_name = form.cleaned_data.get('search_name')
+            if search_name:
+                blogs = Blog.objects.filter(name__icontains=search_name)  # Filtering by name
+            else:
+                blogs = Blog.objects.all()
+            return render(request, 'news_search.html', {'form': form, 'blogs': blogs})
+        return render(request, 'news_search.html', {'form': form, 'blogs': None})

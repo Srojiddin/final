@@ -25,6 +25,55 @@
     <![endif]-->
 
 </head>
+<head>
+    <!-- Подключение jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Другие теги meta и стили -->
+</head>
+<body>
+    <!-- Ваш контент -->
+    
+    <!-- Вставляем скрипт jQuery здесь -->
+    <script>
+    $(document).ready(function() {
+        // Код jQuery
+        updateCartItemCount(); // Вызываем функцию при загрузке страницы
+
+        // Функция для обновления текста кнопки корзины
+        function updateCartItemCount() {
+            var itemCount = {{ cart.items_cart.count }}; // Получаем количество товаров в корзине
+            $('.cart_select span').text('(' + itemCount + ')'); // Обновляем текст кнопки корзины
+        }
+    });
+    </script>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#update-cart-btn').click(function(event) {
+            event.preventDefault();  // Prevent default form submission
+            
+            // Perform AJAX request to update cart
+            $.ajax({
+                type: 'POST',
+                url: '{% url 'update_cart' %}',  // Replace 'update_cart' with your actual URL name
+                data: {
+                    // Provide any necessary data here, like cart updates
+                    // Example: cart_item_id: '123',
+                },
+                success: function(data) {
+                    // Handle success response
+                    console.log('Cart updated successfully');
+                    // Optionally, update the cart UI or display a message
+                },
+                error: function(xhr, errmsg, err) {
+                    // Handle error response
+                    console.log('Error updating cart:', errmsg);
+                }
+            });
+        });
+    });
+    </script>
 <body>
 <div class="boxed_wrapper">
 

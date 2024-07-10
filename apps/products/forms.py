@@ -5,4 +5,20 @@ from .models import Medicine
 class MedicineCreateForm(forms.ModelForm):
     class Meta:
         model = Medicine
-        fields = ['name', 'image_for_medicine', 'price_for_medicine',]
+        fields = ['title', 'image', 'price',]
+
+
+
+
+
+class MedicineUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Medicine
+        fields = ['title', 'image', 'price',]
+
+
+
+class MedicineDeleteForm(forms.ModelForm):
+    class Meta:
+        model = Medicine
+        fields = ['title', 'image', 'price',]

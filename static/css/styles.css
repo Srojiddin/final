@@ -156,3 +156,27 @@ form
   color: #fff;
   border: none;
 }
+
+
+
+.time-table {
+  background-color: lightblue; /* цвет фона таблицы */
+  border-collapse: collapse; /* схлопывание границ */
+  width: 100%;
+}
+
+.time-table th,
+.time-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid black; /* рамка ячеек */
+}
+
+.day-header {
+  background-color: blue; /* цвет фона заголовков */
+  color: white; /* цвет текста заголовков */
+}
+
+.day-column {
+  background-color: lightblue; /* цвет фона ячеек дней */
+}

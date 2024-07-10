@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="time-table-area">
+        <div class="container">
+            <div class="row pd-bottom">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <select class="selectmenu">
+                                <option selected="selected">Select Department</option>
+                                <option>Cardiology</option>
+                                <option>Pulmonology</option>
+                                <option>Gynecology</option>
+                                <option>Neurology</option>
+                                <option>Urology</option>
+                                <option>Gastrology</option>
+                                <option>Pediatrician</option>
+                                <option>Laboratory</option>
+                            </select>  
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-box">
+                                <input type="text" name="date" placeholder="Select Date" id="datepicker">
+                                <div class="icon-box">
+                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="time-table">
+                            <thead>
+                                <tr>
+                                    <th class="day-header">Time / Days</th>
+                                    <th class="day-column">Monday</th>
+                                    <th class="day-column">Tuesday</th>
+                                    <th class="day-column">Wednesday</th>
+                                    <th class="day-column">Thursday</th>
+                                    <th class="day-column">Friday</th>
+                                    <th class="day-column">Суббота</th>
+                                    <th class="day-column">Воскресенье</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="single-box time">
+                                        <div class="inner-content text-center">
+                                            <span>Неделя</span>
+                                        </div>
+                                    </td>
+                                    {% for schedule in monday_schedules %}
+                                        <td class="single-box">
+                                            <div class="inner-content text-center">
+                                                <h5 style="color: black;">{{ schedule.choosing_a_doctor.name }}</h5>
+                                                <span style="color: black;">{{ schedule.calendar }}</span>
+                                                <p style="color: black;">{{ schedule.doctor_name }}</p>
+                                                <h6 class="level" style="color: black;">Уровень:  <span style="color: black;">{{ schedule.level }}</span> </h6>
+                                            </div>
+                                        </td>
+                                    {% endfor %}
+                                    {% for schedule in tuesday_schedules %}
+                                        <td class="single-box">
+                                            <div class="inner-content text-center">
+                                                <h5 style="color: black;">{{ schedule.choosing_a_doctor.name }}</h5>
+                                                <span style="color: black;">{{ schedule.calendar }}</span>
+                                                <p style="color: black;">{{ schedule.doctor_name }}</p>
+                                                <h6 class="level" style="color: black;">Уровень:  <span style="color: black;">{{ schedule.level }}</span> </h6>
+                                            </div>
+                                        </td>
+                                    {% endfor %}
+                                    {% for schedule in wednesday_schedules %}
+                                        <td class="single-box">
+                                            <div class="inner-content text-center">
+                                                <h5 style="color: black;">{{ schedule.choosing_a_doctor.name }}</h5>
+                                                <span style="color: black;">{{ schedule.calendar }}</span>
+                                                <p style="color: black;">{{ schedule.doctor_name }}</p>
+                                                <h6 class="level" style="color: black;">Уровень:  <span style="color: black;">{{ schedule.level }}</span> </h6>
+                                            </div>
+                                        </td>
+                                    {% endfor %}
+                                    {% for schedule in thursday_schedules %}
+                                        <td class="single-box">
+                                            <div class="inner-content text-center">
+                                                <h5 style="color: black;">{{ schedule.choosing_a_doctor.name }}</h5>
+                                                <span style="color: black;">{{ schedule.calendar }}</span>
+                                                <p style="color: black;">{{ schedule.doctor_name }}</p>
+                                                <h6 class="level" style="color: black;">Уровень:  <span style="color: black;">{{ schedule.level }}</span> </h6>
+                                            </div>
+                                        </td>
+                                    {% endfor %}
+                                    {% for schedule in friday_schedules %}
+                                        <td class="single-box">
+                                            <div class="inner-content text-center">
+                                                <h5 style="color: black;">{{ schedule.choosing_a_doctor.name }}</h5>
+                                                <span style="color: black;">{{ schedule.calendar }}</span>
+                                                <p style="color: black;">{{ schedule.doctor_name }}</p>
+                                                <h6 class="level" style="color: black;">Уровень:  <span style="color: black;">{{ schedule.level }}</span> </h6>
+                                            </div>
+                                        </td>
+                                    {% endfor %}
+                                    {% for schedule in saturday_schedules %}
+                                        <td class="single-box">
+                                            <div class="inner-content text-center">
+                                                <h5 style="color: black;">{{ schedule.choosing_a_doctor.name }}</h5>
+                                                <span style="color: black;">{{ schedule.calendar }}</span>
+                                                <p style="color: black;">{{ schedule.doctor_name }}</p>
+                                                <h6 class="level" style="color: black;">Уровень:  <span style="color: black;">{{ schedule.level }}</span> </h6>
+                                            </div>
+                                        </td>
+                                    {% endfor %}
+                                    {% for schedule in sunday_schedules %}
+                                        <td class="single-box">
+                                            <div class="inner-content text-center">
+                                                <h5 style="color: black;">{{ schedule.choosing_a_doctor.name }}</h5>
+                                                <span style="color: black;">{{ schedule.calendar }}</span>
+                                                <p style="color: black;">{{ schedule.doctor_name }}</p>
+                                                <h6 class="level" style="color: black;">Уровень:  <span style="color: black;">{{ schedule.level }}</span> </h6>
+                                            </div>
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

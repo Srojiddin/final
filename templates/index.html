@@ -131,7 +131,7 @@
                             {% csrf_token %}
                             <div class="single-box mar-right-30">
                                 <div class="input-box">
-                                    <input type="text" name="fullname" id="Appointment.fullname" value="" placeholder="Your Name" required>
+                                    <input type="text" name="fullname" id="id_fullname" value="" placeholder="Your Name" required>
                                 </div>
                                 <div class="input-box">
                                     <select name="choosing_a_doctor" class="selectmenu">
@@ -144,18 +144,18 @@
                             </div>
                             <div class="single-box">
                                 <div class="input-box">
-                                    <select name="choosing_a_disease" class="selectmenu">
-                                        <option selected="selected">Select Department</option>
-                                        {% for doctor in doctors %}
-                                            <option value="{{ doctor.id }}">{{ doctor.choosing_a_specialization }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
+                                    <!-- Removed select department dropdown -->
+                                </div> 
                                 <div class="input-box">
                                     <input type="text" name="date_of_reservation" placeholder="Select Date" id="datepicker">
                                     <div class="icon-box">
                                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                                     </div>
+                                    {% if form.date_of_reservation.errors %}
+                                        <span class="text-danger">
+                                            {{ form.date_of_reservation.errors }}
+                                        </span>
+                                    {% endif %}
                                 </div>
                             </div>
                             <button class="thm-btn bgclr-1" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
@@ -171,7 +171,7 @@
 <!--End call to action area-->
 
 <!--Start Medical Departments area-->
-<section class="medical-departments-area">
+{% comment %} <section class="medical-departments-area">
     <div class="container">
         <div class="sec-title">
             <h1>Medical Departments</h1>
@@ -232,11 +232,11 @@
             </div>    
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 <!--End Medical Departments area--> 
   
 <!--Start service area-->
-<section class="service-area">
+{% comment %} <section class="service-area">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -425,7 +425,7 @@
             </div>
         </div>
     </div>
-</section>  
+</section>   {% endcomment %}
 <!--End service area-->
  
 <!--Start team area-->
@@ -485,7 +485,7 @@
 <!--End team area-->
  
 <!--Start fact counter area-->
-<section class="fact-counter-area" style="background-image:url({% static 'images/resources/fact-counter-bg.jpg' %});">
+{% comment %} <section class="fact-counter-area" style="background-image:url({% static 'images/resources/fact-counter-bg.jpg' %});">
     <div class="container">
         <div class="sec-title text-center">
             <h1>Keep your headup & be patient</h1>
@@ -537,11 +537,11 @@
      
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 <!--End fact counter area--> 
  
 <!--Start testimonial area-->
-<section class="testimonial-area">
+{% comment %} <section class="testimonial-area">
     <div class="container">
         <div class="sec-title mar0auto text-center">
             <h1>What Our Clients Say</h1>
@@ -671,7 +671,7 @@
 
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 <!--End testimonial area--> 
 
 <!--Start latest blog area-->  
@@ -772,7 +772,7 @@
 <!--End latest blog area-->
 
 <!--Start facilities Appointment area-->
-<section class="facilities-appointment-area">
+{% comment %} <section class="facilities-appointment-area">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -991,7 +991,7 @@
             </div>
         </div>
     </div>    
-</section>
+</section> {% endcomment %}
 <!--End facilities Appointment area-->
 
 <!--Start brand area-->

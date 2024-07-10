@@ -109,7 +109,7 @@
                         </li>
                     </ul>
                     <div class="button">
-                        <a class="thm-btn bgclr-1" href="#">Our Departments</a>
+                        {% comment %} <a class="thm-btn bgclr-1" href="#">Our Departments</a> {% endcomment %}
                     </div>    
                 </div>
             </div>
@@ -119,7 +119,7 @@
 <!--End welcome area-->
  
 <!--Start special features area-->
-<section class="special-features-area">
+{% comment %} <section class="special-features-area">
     <div class="container">
         <div class="row">
             <!--Start single item-->
@@ -204,11 +204,11 @@
             <!--End single item-->
         </div>    
     </div>
-</section> 
+</section>  {% endcomment %}
 <!--End special features area-->
 
 <!--Start slogan area-->
-<section class="slogan-area">
+{% comment %} <section class="slogan-area">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -221,11 +221,11 @@
             </div>
         </div>
     </div>
-</section>  
+{ </section>    {% endcomment %}
 <!--End slogan area-->
 
 <!--Start project faq area-->
-<section class="project-faq-area sec-padding">
+{% comment %} <section class="project-faq-area sec-padding"> 
     <div class="container">
         <div class="sec-title mar0auto text-center">
             <h1>Photo Gallery & FAQ’s</h1>
@@ -368,11 +368,11 @@
             </div>
         </div>
     </div>
-</section>
+ </section> }
 <!--End project faq area--> 
 
 <!--Start fact counter area-->
-<section class="fact-counter-area black-bg" style="background-image:url({% static 'images/resources/fact-counter-bg-v2.jpg' %});">
+{% comment %} <section class="fact-counter-area black-bg" style="background-image:url({% static 'images/resources/fact-counter-bg-v2.jpg' %});">
     <div class="container">
         <div class="sec-title text-center">
             <h1>Keep <span>your headup</span> & be patient</h1>
@@ -424,140 +424,11 @@
      
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 <!--End fact counter area-->
 
 <!--Start team area-->
-<section class="team-area doctor">
-    <div class="container">
-        <div class="sec-title mar0auto text-center">
-            <h1>Meet Our Doctors</h1>
-            <span class="border"></span>
-        </div>
-        <div class="row">
-            <!--Start single item-->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="single-team-member">
-                    <div class="img-holder">
-                        <img src="{% static 'images/team/1.jpg' %}" alt="Awesome Image">
-                        <div class="overlay-style">
-                            <div class="box">
-                                <div class="content">
-                                    <div class="top">
-                                        <h3>Marc Parcival</h3>
-                                        <span>Newyork</span>
-                                    </div>
-                                    <span class="border"></span>
-                                    <div class="bottom">
-                                        <ul>
-                                            <li><i class="fa fa-phone" aria-hidden="true"></i> +321 567 89 0123</li>
-                                            <li><i class="fa fa-envelope" aria-hidden="true"></i> Bailey@Hospitals.com</li>
-                                        </ul>    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <h3>Marc Parcival</h3> 
-                            <span>Newyork</span>   
-                        </div>    
-                    </div>
-                </div>
-            </div>
-            <!--End single item-->
-            <!--Start single item-->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="single-team-member">
-                    <div class="img-holder">
-                        <img src="{% static 'images/team/2.jpg' %}" alt="Awesome Image">
-                        <div class="overlay-style">
-                            <div class="box">
-                                <div class="content">
-                                    <div class="top">
-                                        <h3>Alen Bailey</h3>
-                                        <span>Newyork</span>
-                                    </div>
-                                    <span class="border"></span>
-                                    <div class="bottom">
-                                        <ul>
-                                            <li><i class="fa fa-phone" aria-hidden="true"></i> +321 567 89 0123</li>
-                                            <li><i class="fa fa-envelope" aria-hidden="true"></i> Bailey@Hospitals.com</li>
-                                        </ul>    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <h3>Marc Parcival</h3> 
-                            <span>Newyork</span>   
-                        </div>    
-                    </div>
-                </div>
-            </div>
-            <!--End single item-->
-            <!--Start single item-->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="single-team-member">
-                    <div class="img-holder">
-                        <img src="{%  static 'images/team/3.jpg' %}" alt="Awesome Image">
-                        <div class="overlay-style">
-                            <div class="box">
-                                <div class="content">
-                                    <div class="top">
-                                        <h3>Basil Andrew</h3>
-                                        <span>Newyork</span>
-                                    </div>
-                                    <span class="border"></span>
-                                    <div class="bottom">
-                                        <ul>
-                                            <li><i class="fa fa-phone" aria-hidden="true"></i> +321 567 89 0123</li>
-                                            <li><i class="fa fa-envelope" aria-hidden="true"></i> Bailey@Hospitals.com</li>
-                                        </ul>    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <h3>Marc Parcival</h3> 
-                            <span>Newyork</span>   
-                        </div>    
-                    </div>
-                </div>
-            </div>
-            <!--End single item-->
-            <!--Start single item-->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="single-team-member">
-                    <div class="img-holder">
-                        <img src="{% static 'images/team/4.jpg' %}" alt="Awesome Image">
-                        <div class="overlay-style">
-                            <div class="box">
-                                <div class="content">
-                                    <div class="top">
-                                        <h3>Edgar Denzil</h3>
-                                        <span>Newyork</span>
-                                    </div>
-                                    <span class="border"></span>
-                                    <div class="bottom">
-                                        <ul>
-                                            <li><i class="fa fa-phone" aria-hidden="true"></i> +321 567 89 0123</li>
-                                            <li><i class="fa fa-envelope" aria-hidden="true"></i> Bailey@Hospitals.com</li>
-                                        </ul>    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <h3>Edgar Denzil</h3> 
-                            <span>Newyork</span>   
-                        </div>    
-                    </div>
-                </div>
-            </div>
-            <!--End single item-->
-        </div>
-    </div>
-</section> 
+
 <!--End team area--> 
 
 <!--Start certificates area-->  

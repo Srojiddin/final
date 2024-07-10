@@ -43,38 +43,6 @@ class ContactListView(generic.ListView):
     template_name = "index.html"
 
 
-# class AppointmentCreate(generic.CreateView):
-#     model = Appointment
-#     form_class = AppointmentCreateForm
-#     template_name = 'index.html' 
-#     success_url = reverse_lazy('index') 
-   
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['select doctor'] = Appointment.objects.all()
-#         context['select departments'] = Appointment.objects.all()
-#         print("*" * 30)
-
-#         return context
-
-# class AppointmentCreateView(LoginRequiredMixin, generic.CreateView):
-#     model = Appointment
-#     form_class = AppointmentCreateForm
-#     template_name = 'index.html'
-#     success_url = reverse_lazy('index')
-
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super().form_valid(form)
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['doctors'] = Doctor.objects.all()
-#         context['categories'] = Category.objects.all()
-#         return context
-
-
 
 class SuperuserRequiredMixin(UserPassesTestMixin):
     def test_func(self):

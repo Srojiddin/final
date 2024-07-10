@@ -4,7 +4,7 @@ from django.urls import reverse
 
 
 class Medicine(models.Model):
-    name = models.CharField(
+    title = models.CharField(
         max_length=50,
         verbose_name="Название",
     )
@@ -13,11 +13,11 @@ class Medicine(models.Model):
         blank=True,
         null=None,
     )
-    image_for_medicine = models.ImageField(
-        upload_to='medicines/',
-        verbose_name="Картинка",
+    image = models.ImageField(
+        upload_to='medicine_images/',
+        verbose_name='Изображение', null=True, blank=True
     )
-    price_for_medicine = models.DecimalField(
+    price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
         verbose_name="Цена",
@@ -29,7 +29,12 @@ class Medicine(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return self.title
+    
+
+    class Meta:
+        verbose_name = 'Медикамент'
+        verbose_name_plural = 'Медикаменты'
 
 
 # class ShopSingle(models.Model):
