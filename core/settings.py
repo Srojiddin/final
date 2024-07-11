@@ -25,7 +25,8 @@ DEBUG = os.getenv('DEBUG')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['AAAAA.herokuapp.com', 'localhost']
+
 
 
 
