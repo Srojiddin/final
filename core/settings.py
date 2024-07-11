@@ -25,7 +25,7 @@ DEBUG = os.getenv('DEBUG')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = ['AAAAA.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -181,8 +181,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 #     os.path.join(BASE_DIR, 'static')
 # ]
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_URL = 'media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
 
 
  
