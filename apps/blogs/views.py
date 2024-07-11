@@ -9,8 +9,8 @@ from django.views.generic import View
 class BlogCreateView(generic.CreateView):
     model = Blog
     form_class = BlogCreateForm
-    template_name = 'blogs/blog_create.html'
-    success_url = reverse_lazy('blogs:list')
+    template_name = 'blog/blog_create.html'
+    success_url = reverse_lazy('blog')
 
 
 class BlogListView(generic.ListView):
@@ -56,16 +56,14 @@ class BlogDetailView(generic.DetailView):
 class BlogUpdateView(generic.UpdateView):
     model = Blog
     form_class = BlogUpdateForm
-    template_name = 'blogs/blog_update.html'
-    success_url = reverse_lazy('blogs:list')
+    template_name = 'blog/blog_update.html'
+    success_url = reverse_lazy('blogs')
 
 
 class BlogDeleteView(generic.DeleteView):
     model = Blog
-    form_class = BlogDeleteForm
-    template_name =  'blogs/blog_delete.html'
-    context_object_name = 'blog'
-    success_url = reverse_lazy('blogs:list')
+    template_name =  'blog/blog_delete.html'
+    success_url = reverse_lazy('blogs')
 
 
 class DepartmentsListView(generic.ListView):
