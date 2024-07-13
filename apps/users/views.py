@@ -1,16 +1,12 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.db import IntegrityError
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import logout
-
-
 from .forms import CustomAuthenticationForm
 from .forms import CustomUserRegisterForm
-
-
 
 
 from apps.doctors.models import Doctor
@@ -73,3 +69,5 @@ def register(request):
         'form': form
     }
     return render(request, 'user/register.html', context)
+
+

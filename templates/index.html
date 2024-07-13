@@ -119,59 +119,73 @@
                 <div class="inner-content">
                     <div class="title-box text-center">
                         <span class="flaticon-calendar"></span>
-                        <h2>Make an Appointment</h2>
+                        <h2>Записаться на прием</h2>
                     </div>
                     {% if not user.is_authenticated %}
-                    <div class="alert alert-warning" style="background-color: SteelBlue; color: white;">
-                        <p>Вы не авторизованы. Пожалуйста, <a href="{% url 'login' %}" style="color: white; text-decoration: underline;">авторизуйтесь</a>.</p>
-                    </div>
-                    {% endif %}
-                    <div class="form-holder clearfix">
-                        <form id="appointment" class="clearfix" name="appointment-form" action="{% url 'create-appointments' %}" method="post">
-                            {% csrf_token %}
-                            <div class="single-box mar-right-30">
-                                <div class="input-box">
-                                    <input type="text" name="fullname" id="id_fullname" value="" placeholder="Your Name" required>
-                                </div>
-                                <div class="input-box">
-                                    <select name="choosing_a_doctor" class="selectmenu">
-                                        <option selected="selected">Select Doctor</option>
-                                        {% for doctor in doctors %}
-                                            <option value="{{ doctor.id }}">{{ doctor.name }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="single-box">
-                                <div class="input-box">
-                                    <!-- Removed select department dropdown -->
-                                </div> 
-                                <div class="input-box">
-                                    <input type="text" name="date_of_reservation" placeholder="Select Date" id="datepicker">
-                                    <div class="icon-box">
-                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <div class="alert alert-warning" style="background-color: SteelBlue; color: white;">
+                            <p>Вы не авторизованы. Пожалуйста, <a href="{% url 'login' %}" style="color: white; text-decoration: underline;">авторизуйтесь</a>.</p>
+                        </div>
+                    {% else %}
+                        <div class="form-holder clearfix">
+                            <form id="appointment" class="clearfix" name="appointment-form" action="{% url 'create-appointments' %}" method="post">
+                                {% csrf_token %}
+                                {% if form.non_field_errors %}
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            {% for error in form.non_field_errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
                                     </div>
-                                    {% if form.date_of_reservation.errors %}
-                                        <span class="text-danger">
-                                            {{ form.date_of_reservation.errors }}
-                                        </span>
-                                    {% endif %}
+                                {% endif %}
+                                <div class="single-box mar-right-30">
+                                    <div class="input-box">
+                                        <input type="text" name="fullname" id="id_fullname" value="{{ form.fullname.value }}" placeholder="Ваше имя" required>
+                                    </div>
+                                    <div class="input-box">
+                                        <select name="choosing_a_doctor" class="selectmenu" required>
+                                            <option selected="selected" disabled>Выберите врача</option>
+                                            {% for doctor in doctors %}
+                                                <option value="{{ doctor.id }}" {% if form.choosing_a_doctor.value == doctor.id %}selected{% endif %}>{{ doctor.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <button class="thm-btn bgclr-1" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                        </form>
-                    </div>
+                                <div class="single-box">
+                                    <div class="input-box">
+                                        <!-- Удален выпадающий список отделения -->
+                                    </div>
+                                    <div class="input-box">
+                                        <input type="text" name="date_of_reservation" placeholder="Выберите дату" id="datepicker" value="{{ form.date_of_reservation.value }}" required>
+                                        <input type="time" name="time_of_reservation" placeholder="Выберите время" value="{{ form.time_of_reservation.value }}" required>
+                                        <div class="icon-box">
+                                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                        </div>
+                                        {% if form.date_of_reservation.errors %}
+                                            <span class="text-danger">
+                                                {{ form.date_of_reservation.errors }}
+                                            </span>
+                                        {% endif %}
+                                        {% if form.time_of_reservation.errors %}
+                                            <span class="text-danger">
+                                                {{ form.time_of_reservation.errors }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <button class="thm-btn bgclr-1" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Записаться</button>
+                            </form>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-
 <!--End call to action area-->
 
 <!--Start Medical Departments area-->
-{% comment %} <section class="medical-departments-area">
+ <section class="medical-departments-area">
     <div class="container">
         <div class="sec-title">
             <h1>Medical Departments</h1>
@@ -232,11 +246,11 @@
             </div>    
         </div>
     </div>
-</section> {% endcomment %}
+</section> 
 <!--End Medical Departments area--> 
   
 <!--Start service area-->
-{% comment %} <section class="service-area">
+ <section class="service-area">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -425,7 +439,7 @@
             </div>
         </div>
     </div>
-</section>   {% endcomment %}
+</section>   
 <!--End service area-->
  
 <!--Start team area-->
@@ -485,7 +499,7 @@
 <!--End team area-->
  
 <!--Start fact counter area-->
-{% comment %} <section class="fact-counter-area" style="background-image:url({% static 'images/resources/fact-counter-bg.jpg' %});">
+ <section class="fact-counter-area" style="background-image:url({% static 'images/resources/fact-counter-bg.jpg' %});">
     <div class="container">
         <div class="sec-title text-center">
             <h1>Keep your headup & be patient</h1>
@@ -537,7 +551,7 @@
      
         </div>
     </div>
-</section> {% endcomment %}
+</section> 
 <!--End fact counter area--> 
  
 <!--Start testimonial area-->

@@ -11,9 +11,7 @@ from apps.doctors.models import Doctor
 from apps.categories.models import Category
 from apps.doctors.forms import DoctorCreateForm, DoctorUpdateForm, DoctorDeleteForm
 
-from django.contrib.auth.decorators import login_required
-# from .models import DoctorProfile
-# from .forms import DoctorProfileForm
+
 
 
 
@@ -70,46 +68,3 @@ class DoctorDeleteView(generic.DeleteView):
     context_object_name = 'doctor'
     success_url = reverse_lazy('doctors_list')
 
-
-
-
-def cardiologist_view(request):
-    doctors = Doctor.objects.filter(choosing_a_specialization='cardiologist')
-    return render(request, 'cardiologist.html', {'doctors': doctors})
-
-def gynaecologist_view(request):
-    doctors = Doctor.objects.filter(choosing_a_specialization='gynaecologist')
-    return render(request, 'gynaecologist.html', {'doctors': doctors})
-
-
-
-def neurologist_list(request):
-    neurologists = Doctor.objects.filter(choosing_a_specialization='neurologist')
-    context = {
-        'neurologists': neurologists
-    }
-    return render(request, 'neurologist_list.html', context)
-
-
-def ophthalmologist_list(request):
-    ophthalmologists = Doctor.objects.filter(choosing_a_specialization='ophthalmologist')
-    context = {
-        'ophthalmologists': ophthalmologists
-    }
-    return render(request, 'ophthalmologist_list.html', context)
-
-
-def paediatrician_list(request):
-    paediatricians = Doctor.objects.filter(choosing_a_specialization='paediatrician')
-    context = {
-        'paediatricians': paediatricians
-    }
-    return render(request, 'paediatrician_list.html', context)
-
-
-def practitioner_list(request):
-    practitioners = Doctor.objects.filter(choosing_a_specialization='practitioner')
-    context = {
-        'practitioners': practitioners
-    }
-    return render(request, 'practitioner_list.html', context)

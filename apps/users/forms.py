@@ -1,8 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import CustomUser
-from django.contrib.auth.models import User
-
 
 class CustomAuthenticationForm(AuthenticationForm):
     def confirm_login_allowed(self, user):
@@ -25,3 +23,8 @@ class CustomUserRegisterForm(UserCreationForm):
         if CustomUser.objects.filter(username=username).exists():
             raise forms.ValidationError("Username is already taken.")
         return username
+    
+
+
+
+

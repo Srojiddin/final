@@ -2,12 +2,14 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import render
 from django.views import generic
 from apps.appointments.models import Appointment
+from django.views.generic import CreateView
 from apps.appointments.forms import AppointmentCreateForm, AppointmentDetailForm, AppointmentDeleteForm
 from django.urls import reverse_lazy
 from apps.appointments.models import Appointment, Doctor, Category
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseForbidden
 
 class AppointmentList(generic.ListView):
     model = Appointment
@@ -40,20 +42,14 @@ class AppointmentDelete(generic.DeleteView):
 
 class ContactListView(generic.ListView):
     model = Appointment
-    template_name = "index.html"
 
 
-
-class SuperuserRequiredMixin(UserPassesTestMixin):
-    def test_func(self):
-        return self.request.user.is_superuser
-
-class AppointmentCreateView(SuperuserRequiredMixin, LoginRequiredMixin, generic.CreateView):
+class AppointmentCreateView(LoginRequiredMixin, CreateView):
     model = Appointment
     form_class = AppointmentCreateForm
     template_name = 'index.html'
     success_url = reverse_lazy('index')
-
+    
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)

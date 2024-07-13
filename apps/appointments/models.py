@@ -9,7 +9,6 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 
 
-
 class Appointment(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -20,25 +19,18 @@ class Appointment(models.Model):
     choosing_a_doctor = models.ForeignKey(
         Doctor,
         on_delete=models.CASCADE,
-        verbose_name='Выбор врача'
+    #     verbose_name='Выбор врача'
     )
     date_of_reservation = models.DateField(verbose_name='Дата записи')
-
-    def clean(self):
-        # Проверяем, есть ли уже запись на прием для данного пользователя на эту дату
-        if Appointment.objects.filter( date_of_reservation=self.date_of_reservation).exists():
-            raise ValidationError('Запись на прием для данного пользователя на эту дату уже существует.')
-
-    def save(self, *args, **kwargs):
-        self.clean()  # Вызываем clean() для выполнения пользовательской валидации
-        super().save(*args, **kwargs)
+    time_of_reservation = models.TimeField(verbose_name='Время записи')
 
     def __str__(self):
-        return f"Запись на прием у {self.fullname}"
+        return f"Запись на прием у {self.choosing_a_doctor} на {self.date_of_reservation} в {self.time_of_reservation}"
 
 
 class Contact(models.Model):
     ...
+
 
 
 # class 
